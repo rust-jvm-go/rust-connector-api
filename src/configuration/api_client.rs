@@ -44,7 +44,7 @@ impl APIClient {
                     vdt.format()?,
                     parameters,
                     locations,
-                    Format::CSV.to_string()
+                    Format::CSV
                 )
             }
             Some(_) => {
@@ -53,7 +53,7 @@ impl APIClient {
                     vdt.format()?,
                     parameters,
                     locations,
-                    Format::CSV.to_string(),
+                    Format::CSV,
                     optionals.unwrap()
                 )
             }

@@ -46,23 +46,17 @@ impl ValidDateTime {
         let start = self.start_date_time.to_string();
         let mut suffix = "".to_string();
         let mut both = false;
-        match self.period_date {
-            Some(_) => {
-                suffix = self.period_date.unwrap().to_string();
-            }
-            _ => {}
+        if self.period_date.is_some() {
+            suffix = self.period_date.unwrap().to_string();
         }
-        match self.time_step {
-            Some(_) => {
-                if suffix != "" {
-                    suffix = suffix + ":";
-                    both = true;
-                }
-                suffix = suffix + &*self.time_step.unwrap().to_string();
+        if self.time_step.is_some() {
+            if !suffix.is_empty() {
+                suffix += ":";
+                both = true;
             }
-            _ => {}
+            suffix += &*self.time_step.unwrap().to_string();
         }
-        return match self.end_date_time {
+        match self.end_date_time {
             None => Ok(start + &*suffix),
             Some(_) => {
                 if both {
@@ -71,12 +65,12 @@ impl ValidDateTime {
                     ));
                 }
                 let mut end = self.end_date_time.unwrap().to_string();
-                if suffix != "" {
+                if !suffix.is_empty() {
                     end = end + ":" + &*suffix;
                 }
                 Ok(format!("{}--{}", start, end))
             }
-        };
+        }
     }
 }
 
