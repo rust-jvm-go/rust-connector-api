@@ -42,6 +42,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# RustRover
+.fleet
+
 ### VisualStudioCode template
 .vscode/*
 !.vscode/settings.json
