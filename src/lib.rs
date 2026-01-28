@@ -44,6 +44,9 @@ impl MeteomaticsConnector {
 #[cfg(test)]
 mod tests {
 
+    // To make println!() visible in the test output, use:
+    // cargo test -- --nocapture
+
     use crate::connector_response::ResponseBody;
     use crate::locations::{Coordinates, Locations};
     use crate::optionals::{Opt, OptSet, Optionals};
